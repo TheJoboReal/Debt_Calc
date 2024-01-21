@@ -31,6 +31,10 @@ void ui() {
             personer.updateShares();
             personer.whoOwed();
 
+            std::cout << "--------------------------------------------------------------------" << std::endl;
+            std::cout << std::endl;
+            personer.whatOwed();
+
 
             // Clear the input buffer
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');

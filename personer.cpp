@@ -75,7 +75,7 @@ void Personer::whoOwed(){
 
     for(int i=0; i<owed.size(); i++){
         for(int j=0; j<owes.size(); j++){
-            std::cout << owes[j].getName() << " skal sende :" << (-owed[i].getShare() / owes.size())/100 << "kr til " << owed[i].getName() << std::endl;
+            std::cout << owes[j].getName() << " skal sende :" << -owed[i].getShare() / _personer.size() << "kr til " << owed[i].getName() << std::endl;
         }
     }
 }
@@ -83,10 +83,10 @@ void Personer::whoOwed(){
 void Personer::whatOwed(){
     for(int i=0; i<_personer.size(); i++){
         if(_personer[i].getShare() > 0){
-            std::cout << _personer[i].getName() << " skal betale :" << (_personer[i].getShare())/100 << "kr" << std::endl;
+            std::cout << _personer[i].getName() << " skal betale :" << _personer[i].getShare() << "kr" << std::endl;
         }
         else if(_personer[i].getShare() < 0){
-            std::cout << _personer[i].getName() << " skal modtage :" << (-_personer[i].getShare())/100 << "kr" << std::endl;
+            std::cout << _personer[i].getName() << " skal modtage :" << -_personer[i].getShare() << "kr" << std::endl;
         }
     }
 }

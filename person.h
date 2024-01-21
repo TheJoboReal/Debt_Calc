@@ -12,7 +12,7 @@ private:
 
 public:
     Person(std::string name, double debt): _name(name){
-        _debt = debt*100;
+        _debt = debt;
     };
     Person() {};
 
