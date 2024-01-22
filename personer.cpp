@@ -45,7 +45,6 @@ double Personer::getEqualShare(Person input){
 
 void Personer::updateShares(){
 
-
     double equal_share = 0.0;
     equal_share= getTotalDebt() / numPersons();
 
@@ -75,7 +74,7 @@ void Personer::whoOwed(){
 
     for(int i=0; i<owed.size(); i++){
         for(int j=0; j<owes.size(); j++){
-            std::cout << owes[j].getName() << " skal sende :" << -owed[i].getShare() / _personer.size() << "kr til " << owed[i].getName() << std::endl;
+            std::cout << owes[j].getName() << " skal sende :" << -owed[i].getShare() / owes.size() << "kr til " << owed[i].getName() << std::endl;
         }
     }
 }
