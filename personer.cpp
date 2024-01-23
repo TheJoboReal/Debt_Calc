@@ -58,33 +58,69 @@ void Personer::updateShares(){
 
 };
 
-void Personer::whoOwed(){
+// void Personer::whoOwed(){
 
+//     std::vector<Person> owed;
+//     std::vector<Person> owes;
+
+//     for(int i=0; i<_personer.size(); i++){
+//         if(_personer[i].getShare() < 0){
+//             owed.push_back(_personer[i]);
+//         }
+//         else if(_personer[i].getShare() > 0){
+//             owes.push_back(_personer[i]);
+//         }
+//     }
+
+//     for(int i=0; i<owed.size(); i++){
+//         for(int j=0; j<owes.size(); j++){
+//             std::cout << owes[j].getName() << " skal sende :" << -owed[i].getShare() / owes.size() << "kr til " << owed[i].getName() << std::endl;
+//         }
+//     }
+// }
+
+void Personer::whoOwed() {
     std::vector<Person> owed;
     std::vector<Person> owes;
 
-    for(int i=0; i<_personer.size(); i++){
-        if(_personer[i].getShare() < 0){
+    // Separate people who owe money and people who are owed money
+    for (int i = 0; i < _personer.size(); i++) {
+        if (_personer[i].getShare() < 0) {
             owed.push_back(_personer[i]);
-        }
-        else if(_personer[i].getShare() > 0){
+        } else if (_personer[i].getShare() > 0) {
             owes.push_back(_personer[i]);
         }
     }
 
-    for(int i=0; i<owed.size(); i++){
-        for(int j=0; j<owes.size(); j++){
-            std::cout << owes[j].getName() << " skal sende :" << -owed[i].getShare() / owes.size() << "kr til " << owed[i].getName() << std::endl;
+    // Iterate through people who are owed money
+    for (int i = 0; i < owed.size(); i++) {
+        double totalOwed = -owed[i].getShare();
+
+        // Iterate through people who owe money
+        for (int j = 0; j < owes.size(); j++) {
+            if (totalOwed > 0) {
+                double share = std::min(totalOwed, owes[j].getShare());
+
+                if(share!=0){
+                    std::cout << owes[j].getName() << " skal sende: " << share << "kr til " << owed[i].getName() << std::endl;
+                }
+                // Update the share for the person who owes money
+                owes[j].setShare(owes[j].getShare() - share);
+
+                // Update the share for the person who is owed money
+                owed[i].setShare(owed[i].getShare() + share);
+
+                totalOwed -= share;
+            }
         }
     }
 }
 
+
+
 void Personer::whatOwed(){
     for(int i=0; i<_personer.size(); i++){
-        if(_personer[i].getShare() > 0){
-            std::cout << _personer[i].getName() << " skal betale :" << _personer[i].getShare() << "kr" << std::endl;
-        }
-        else if(_personer[i].getShare() < 0){
+        if(_personer[i].getShare() < 0){
             std::cout << _personer[i].getName() << " skal modtage :" << -_personer[i].getShare() << "kr" << std::endl;
         }
     }

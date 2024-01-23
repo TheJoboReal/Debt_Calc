@@ -26,6 +26,7 @@ void ui() {
 
             std::cout << std::endl;
             std::cout << "--------------------------------------------------------------------" << std::endl;
+            std::cout << "--------------------------------------------------------------------" << std::endl;
             std::cout << std::endl;
 
             personer.updateShares();
@@ -40,8 +41,9 @@ void ui() {
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
             std::cout << std::endl;
-
             std::cout << "--------------------------------------------------------------------" << std::endl;
+            std::cout << "--------------------------------------------------------------------" << std::endl;
+            std::cout << std::endl;
 
             break;
         }
