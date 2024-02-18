@@ -4,51 +4,61 @@
 void ui() {
     Personer personer;
     std::vector<Person> persons;
+    char choice;
+
 
     while (true) {
-        std::string name;
-        double debt = 0.0;
 
-        std::cout << "Enter name: ";
-        std::getline(std::cin, name);  // Use std::getline without additional operations
+        switch (choice){
 
-        std::cout << "Enter debt: ";
-        std::cin >> debt;
+            std::cout << "Do you want to add another person?    y/n: ";
+            std::cin >> choice;
 
-        persons.emplace_back(name, debt);
-        personer.addPerson(persons.back());
+            case 'y':
 
-        char choice;
-        std::cout << "Do you want to add another person?    y/n: ";
-        std::cin >> choice;
+            std::string name;
+            double debt = 0.0;
 
-        if (choice == 'n') {
+            std::cout << "Enter name: ";
+            std::getline(std::cin, name);  // Use std::getline without additional operations
 
-            std::cout << std::endl;
-            std::cout << "--------------------------------------------------------------------" << std::endl;
-            std::cout << "--------------------------------------------------------------------" << std::endl;
-            std::cout << std::endl;
+            std::cout << "Enter debt: ";
+            std::cin >> debt;
 
-            personer.updateShares();
-            personer.whoOwed();
+            persons.emplace_back(name, debt);
+            personer.addPerson(persons.back());
 
-            std::cout << "--------------------------------------------------------------------" << std::endl;
-            std::cout << std::endl;
-            personer.whatOwed();
 
+            break;
+        
+        case 'n':
 
             // Clear the input buffer
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-            std::cout << std::endl;
-            std::cout << "--------------------------------------------------------------------" << std::endl;
-            std::cout << "--------------------------------------------------------------------" << std::endl;
-            std::cout << std::endl;
+            std::cout << "What do you want to do?" << std::endl;
+            std::cout << "1. Show persons" << std::endl;
+            std::cout << "2. Edit person" << std::endl;
+            std::cout << "3. Show results" << std::endl;
+            std::cout << "4. Quit" << std::endl;
+            std::cin >> choice;
+
+            switch (choice)
+            {
+            case '1':
+                personer.printPersonDebt();
+                break;
+            
+            default:
+                break;
+            }
+
 
             break;
         }
 
         // Clear the input buffer
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
     }
 }

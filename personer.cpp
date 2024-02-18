@@ -116,8 +116,6 @@ void Personer::whoOwed() {
     }
 }
 
-
-
 void Personer::whatOwed(){
     for(int i=0; i<_personer.size(); i++){
         if(_personer[i].getShare() < 0){
@@ -127,7 +125,98 @@ void Personer::whatOwed(){
 }
 
 void Personer::printNames(){
+
     for(int i=0; i<numPersons(); i++){
         std::cout << _personer[i].getName() << std::endl;
     }
+}
+
+void Personer::showResults(){
+
+
+            std::cout << std::endl;
+            std::cout << "--------------------------------------------------------------------" << std::endl;
+            std::cout << "--------------------------------------------------------------------" << std::endl;
+            std::cout << std::endl;
+
+            updateShares();
+            whoOwed();
+
+            std::cout << "--------------------------------------------------------------------" << std::endl;
+            std::cout << std::endl;
+            whatOwed();
+
+
+            // Clear the input buffer
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+            std::cout << std::endl;
+            std::cout << "--------------------------------------------------------------------" << std::endl;
+            std::cout << "--------------------------------------------------------------------" << std::endl;
+            std::cout << std::endl;
+    
+}
+
+void Personer::printPersonDebt(){
+
+    for(int i=0; i<numPersons(); i++){
+        std::cout << i << " " << _personer[i].getName() << " :" << _personer[i].getDebt() << std::endl;
+    }
+} 
+
+void Personer::setPersoner(std::vector<Person> input){
+    _personer = input;
+};
+
+void Personer::removePerson(int input){
+    Personer temp;
+    for(int i=0; i<numPersons(); i++){
+        if(i != input){
+            temp.addPerson(_personer[i]);
+        }
+    }
+    setPersoner(temp);
+}
+
+void Personer::editPerson(){
+            int person;
+
+            std::cout << std::endl;
+            std::cout << "--------------------------------------------------------------------" << std::endl;
+            std::cout << "--------------------------------------------------------------------" << std::endl;
+            std::cout << std::endl;
+
+            printPersonDebt();
+
+            std::cout << std::endl;
+
+            std::cout << "Who do you want to edit? :";
+            std::cin >> person;
+            std::cout << std::endl;
+
+
+            int removeOrEdit;
+            std::cout << "1:Remove or 2:edit person? :";
+            std::cin >> removeOrEdit;
+            std::cout << std::endl;
+
+            switch(removeOrEdit){
+
+                case '1':
+                    removePerson(person);
+                    break;
+
+                case '2':
+                double newDebt;
+                    std::cout << "New debt: ";
+                    std::cin >> newDebt;
+                    std::cout << std::endl;
+
+                    _personer[person].setShare(newDebt);
+                    std::cout << "New share is " << newDebt << std::endl;
+                    break;
+            }
+
+
+
 }
