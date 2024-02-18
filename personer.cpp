@@ -206,9 +206,16 @@ void Personer::editPerson(){
                     std::cin >> newDebt;
                     std::cout << std::endl;
 
-                    _personer[person].setShare(newDebt);
-                    std::cout << "New share is " << newDebt << std::endl;
-                    std::cout << std::endl;
+                    // _personer[person].setShare(newDebt);
+                    // std::cout << std::endl;
+
+                    Person personShare;
+                    personShare.setName(_personer[person].getName());
+                    personShare.setShare(newDebt);
+
+                    removePerson(person);
+                    addPerson(personShare);
+
                     break;
             }
 
