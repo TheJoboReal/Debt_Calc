@@ -35,6 +35,7 @@ public:
     void printPersonDebt();
     void editPerson();
     void removePerson(int input);
+    void uiAddPerson();
 
     size_t numPersons();
 

@@ -15,3 +15,7 @@ void Person::setShare(double share){
 double Person::getShare(){
     return _each_share;
 }
+
+void Person::setName(std::string name){
+    _name = name;
+}

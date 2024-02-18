@@ -169,13 +169,7 @@ void Personer::setPersoner(std::vector<Person> input){
 };
 
 void Personer::removePerson(int input){
-    Personer temp;
-    for(int i=0; i<numPersons(); i++){
-        if(i != input){
-            temp.addPerson(_personer[i]);
-        }
-    }
-    setPersoner(temp);
+      _personer.erase (_personer.begin()+input);
 }
 
 void Personer::editPerson(){
@@ -202,21 +196,23 @@ void Personer::editPerson(){
 
             switch(removeOrEdit){
 
-                case '1':
+                case 1:
                     removePerson(person);
                     break;
 
-                case '2':
+                case 2:
                 double newDebt;
-                    std::cout << "New debt: ";
+                    std::cout << "New share: ";
                     std::cin >> newDebt;
                     std::cout << std::endl;
 
                     _personer[person].setShare(newDebt);
                     std::cout << "New share is " << newDebt << std::endl;
+                    std::cout << std::endl;
                     break;
             }
 
 
 
 }
+

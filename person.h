@@ -20,6 +20,8 @@ public:
     std::string getName();
 
     void setShare(double share);
+    void setName(std::string name);
+
     double getShare();
 };
 
