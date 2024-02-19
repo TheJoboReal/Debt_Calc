@@ -159,9 +159,13 @@ void Personer::showResults(){
 
 void Personer::printPersonDebt(){
 
+    std::cout << "--------------------------------------------------------------------" << std::endl;
+
     for(int i=0; i<numPersons(); i++){
         std::cout << i << " " << _personer[i].getName() << " :" << _personer[i].getDebt() << std::endl;
     }
+
+    std::cout << "--------------------------------------------------------------------" << std::endl;
 } 
 
 void Personer::setPersoner(std::vector<Person> input){
@@ -206,15 +210,15 @@ void Personer::editPerson(){
                     std::cin >> newDebt;
                     std::cout << std::endl;
 
-                    // _personer[person].setShare(newDebt);
-                    // std::cout << std::endl;
+                    _personer[person].setShare(newDebt);
+                    std::cout << std::endl;
 
-                    Person personShare;
-                    personShare.setName(_personer[person].getName());
-                    personShare.setShare(newDebt);
+                    // Person personShare;
+                    // personShare.setName(_personer[person].getName());
+                    // personShare.setShare(newDebt);
 
-                    removePerson(person);
-                    addPerson(personShare);
+                    // removePerson(person);
+                    // addPerson(personShare);
 
                     break;
             }
