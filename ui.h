@@ -3,7 +3,6 @@
 
 void ui() {
     Personer personer;
-    std::vector<Person> persons;
     char choice;
     bool run_state = true;
     bool person_adder = true;
@@ -35,21 +34,26 @@ void ui() {
                     switch (choice){
                         case 'y':{
 
-                        std::string name;
-                        double debt = 0.0;
+                            Person person;
 
-                        std::cout << "Enter name: ";
-                        std::cin >> name;
+                            std::string name;
+                            double share = 0.0;
 
-                        std::cout << std::endl;
+                            std::cout << "Enter name: ";
+                            std::cin >> name;
 
-                        std::cout << "Enter share: ";
-                        std::cin >> debt;
+                            std::cout << std::endl;
 
-                        persons.emplace_back(name, debt);
-                        personer.addPerson(persons.back());
-                        std::cout << std::endl;
-                        break;
+                            std::cout << "Enter share: ";
+                            std::cin >> share;
+
+                            person.setName(name);
+                            person.setShare(share);
+
+                            personer.addPerson(person);
+
+                            std::cout << std::endl;
+                            break;
                         }
 
                         case 'n':
