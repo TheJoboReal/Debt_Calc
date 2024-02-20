@@ -16,7 +16,6 @@ public:
     };
     Person() {};
 
-    int getDebt();
     std::string getName();
 
     void setShare(double share);

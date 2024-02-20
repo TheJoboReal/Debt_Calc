@@ -6,22 +6,22 @@ Person Personer::getPerson(int i){
     return _personer[i];
 };
 
-double Personer::getTotalDebt(){
-    double totaldebt = 0;
+double Personer::getTotalShare(){
+    double totalshare = 0;
 
     for(int i = 0; i < _personer.size(); i++){
-        totaldebt += _personer[i].getDebt();
+        totalshare += _personer[i].getShare();
         };
-    return totaldebt;
+    return totalshare;
 };
 
-double Personer::getTotalDebt(std::vector<Person> input){
-double totaldebt = 0;
+double Personer::getTotalShare(std::vector<Person> input){
+double totalshare = 0;
 
 for(int i = 0; i < input.size(); i++){
-    totaldebt += input[i].getDebt();
+    totalshare += input[i].getShare();
     };
-return totaldebt;
+return totalshare;
 };
 
 size_t Personer::numPersons(){
@@ -39,20 +39,20 @@ void Personer::addPerson(Person input){
 double Personer::getEqualShare(Person input){
     double each_share = 0.0;
 
-    each_share = getTotalDebt() / numPersons() - input.getDebt();
+    each_share = getTotalShare() / numPersons() - input.getShare();
     return each_share;
 };
 
 void Personer::updateShares(){
 
     double equal_share = 0.0;
-    equal_share= getTotalDebt() / numPersons();
+    equal_share= getTotalShare() / numPersons();
 
     for(int i=0; i< numPersons(); i++){
 
         double indv_share = 0.0;
 
-        indv_share = equal_share - _personer[i].getDebt();
+        indv_share = equal_share - _personer[i].getShare();
         _personer[i].setShare(indv_share);
     }
 
@@ -157,12 +157,12 @@ void Personer::showResults(){
     
 }
 
-void Personer::printPersonDebt(){
+void Personer::printPersonShare(){
 
     std::cout << "--------------------------------------------------------------------" << std::endl;
 
     for(int i=0; i<numPersons(); i++){
-        std::cout << i << " " << _personer[i].getName() << " :" << _personer[i].getDebt() << std::endl;
+        std::cout << i << " " << _personer[i].getName() << " :" << _personer[i].getShare() << std::endl;
     }
 
     std::cout << "--------------------------------------------------------------------" << std::endl;
@@ -184,7 +184,7 @@ void Personer::editPerson(){
             std::cout << "--------------------------------------------------------------------" << std::endl;
             std::cout << std::endl;
 
-            printPersonDebt();
+            printPersonShare();
 
             std::cout << std::endl;
 
@@ -205,17 +205,17 @@ void Personer::editPerson(){
                     break;
 
                 case 2:
-                double newDebt;
+                double newShare;
                     std::cout << "New share: ";
-                    std::cin >> newDebt;
+                    std::cin >> newShare;
                     std::cout << std::endl;
 
-                    _personer[person].setShare(newDebt);
+                    _personer[person].setShare(newShare);
                     std::cout << std::endl;
 
                     // Person personShare;
                     // personShare.setName(_personer[person].getName());
-                    // personShare.setShare(newDebt);
+                    // personShare.setShare(newShare);
 
                     // removePerson(person);
                     // addPerson(personShare);

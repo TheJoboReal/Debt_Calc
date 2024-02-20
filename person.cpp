@@ -1,9 +1,5 @@
 #include "person.h"
 
-int Person::getDebt(){
-    return _debt;
-}
-
 std::string Person::getName(){
     return _name;
 }

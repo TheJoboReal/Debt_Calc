@@ -19,8 +19,8 @@ public:
 
 
     Person getPerson(int i);
-    double getTotalDebt();
-    double getTotalDebt(std::vector<Person> input);
+    double getTotalShare();
+    double getTotalShare(std::vector<Person> input);
     double getEqualShare(Person input);
 
     void setPersoner(std::vector<Person> input);
@@ -32,7 +32,7 @@ public:
     void whatOwed();
     void printNames();
     void showResults();
-    void printPersonDebt();
+    void printPersonShare();
     void editPerson();
     void removePerson(int input);
     void uiAddPerson();

@@ -3,3 +3,9 @@ compile:
 
 run: compile
 	./main.out
+
+install: compile
+	sudo rm /usr/bin/shares
+	cp main.out shares
+	sudo chmod +x shares
+	sudo mv shares /usr/bin

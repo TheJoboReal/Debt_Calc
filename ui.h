@@ -12,9 +12,6 @@ void ui() {
     while (run_state) {
 
 
-            // Clear the input buffer
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
             std::cout << std::endl;
             std::cout << "What do you want to do?" << std::endl;
             std::cout << "0. Add people" << std::endl;
@@ -31,9 +28,6 @@ void ui() {
                 
                 while(person_adder){
 
-                    // Clear the input buffer
-                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
                     std::cout << "Do you want to add another person?    y/n: ";
                     std::cin >> choice;
                     std::cout << std::endl;
@@ -49,7 +43,7 @@ void ui() {
 
                         std::cout << std::endl;
 
-                        std::cout << "Enter debt: ";
+                        std::cout << "Enter share: ";
                         std::cin >> debt;
 
                         persons.emplace_back(name, debt);
@@ -68,7 +62,7 @@ void ui() {
                 }
 
             case '1':
-                personer.printPersonDebt();
+                personer.printPersonShare();
                 std::cout << std::endl;
                 break;
             
