@@ -5,7 +5,6 @@ void ui() {
     Personer personer;
     char choice;
     bool run_state = true;
-    bool person_adder = true;
 
 
     while (run_state) {
@@ -24,46 +23,9 @@ void ui() {
             switch (choice)
             {
             case '0':
-                
-                while(person_adder){
-
-                    std::cout << "Do you want to add another person?    y/n: ";
-                    std::cin >> choice;
-                    std::cout << std::endl;
-
-                    switch (choice){
-                        case 'y':{
-
-                            Person person;
-
-                            std::string name;
-                            double share = 0.0;
-
-                            std::cout << "Enter name: ";
-                            std::cin >> name;
-
-                            std::cout << std::endl;
-
-                            std::cout << "Enter share: ";
-                            std::cin >> share;
-
-                            person.setName(name);
-                            person.setShare(share);
-
-                            personer.addPerson(person);
-
-                            std::cout << std::endl;
-                            break;
-                        }
-
-                        case 'n':
-                        // Clear the input buffer
-                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-                        person_adder = false;
-                        break;
-                    }
-                }
+                personer.uiAddPerson();
+                std::cout << std::endl;
+                break;
 
             case '1':
                 personer.printPersonShare();

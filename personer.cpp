@@ -1,5 +1,9 @@
 #include "personer.h"
 
+char person_choice = true;
+bool person_adder = true;
+
+
 Personer::Personer(){};
 
 Person Personer::getPerson(int i){
@@ -212,6 +216,11 @@ void Personer::editPerson(){
 
                     _personer[person].setShare(newShare);
                     std::cout << std::endl;
+                    std::cout << std::endl;
+
+                    std::cout << "--------------------------------------------------------------------" << std::endl;
+                    std::cout << getPerson(person).getName() << "'s new share is " << newShare << std::endl;
+                    std::cout << "--------------------------------------------------------------------" << std::endl;
 
                     // Person personShare;
                     // personShare.setName(_personer[person].getName());
@@ -227,3 +236,52 @@ void Personer::editPerson(){
 
 }
 
+void Personer::uiAddPerson(){
+
+    while(person_adder){
+
+        std::cout << "Do you want to add another person?    y/n: ";
+        std::cin >> person_choice;
+        std::cout << std::endl;
+
+        switch (person_choice){
+            case 'y':{
+
+                Person person;
+
+                std::string name;
+                double share = 0.0;
+
+                std::cout << "Enter name: ";
+                std::cin >> name;
+
+                std::cout << std::endl;
+
+                std::cout << "Enter share: ";
+                std::cin >> share;
+
+                person.setName(name);
+                person.setShare(share);
+
+                addPerson(person);
+
+                std::cout << std::endl;
+                printPersonShare();
+                std::cout << std::endl;
+                break;
+            }
+
+            case 'n':
+            // Clear the input buffer
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+            std::cout << std::endl;
+            printPersonShare();
+            std::cout << std::endl;
+
+            person_adder = false;
+            break;
+        }
+    }
+
+}
