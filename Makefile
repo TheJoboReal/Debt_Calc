@@ -2,7 +2,7 @@ compile:
 	g++ main.cpp personer.cpp person.cpp -o shares.out
 
 win:
-	g++ main.cpp personer.cpp person.cpp -o shares.exe
+	x86_64-w64-mingw32-g++ main.cpp person.cpp personer.cpp -o shares.exe
 
 run: compile
 	./shares.out

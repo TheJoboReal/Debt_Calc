@@ -152,7 +152,7 @@ void Personer::showResults(){
 
 
             // Clear the input buffer
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
             std::cout << std::endl;
             std::cout << "--------------------------------------------------------------------" << std::endl;
@@ -273,7 +273,7 @@ void Personer::uiAddPerson(){
 
             case 'n':
             // Clear the input buffer
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
             std::cout << std::endl;
             printPersonShare();
