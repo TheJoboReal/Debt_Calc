@@ -250,7 +250,7 @@ void Personer::uiAddPerson(){
                 Person person;
 
                 std::string name;
-                double share = 0.0;
+                double share;
 
                 std::cout << "Enter name: ";
                 std::cin >> name;
@@ -258,7 +258,20 @@ void Personer::uiAddPerson(){
                 std::cout << std::endl;
 
                 std::cout << "Enter share: ";
-                std::cin >> share;
+                // std::cin >> share;
+
+                while (1) {
+                if (std::cin >> share) {
+                    // valid number
+                    break;
+                } else {
+                    // not a valid number
+                    std::cout << "Invalid Input! Please input a numerical value." << std::endl;
+                    std::cin.clear();
+                    while (std::cin.get() != '\n') ; // empty loop
+                }
+                }
+
 
                 person.setName(name);
                 person.setShare(share);
