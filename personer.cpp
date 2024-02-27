@@ -222,13 +222,6 @@ void Personer::editPerson(){
                     std::cout << getPerson(person).getName() << "'s new share is " << newShare << std::endl;
                     std::cout << "--------------------------------------------------------------------" << std::endl;
 
-                    // Person personShare;
-                    // personShare.setName(_personer[person].getName());
-                    // personShare.setShare(newShare);
-
-                    // removePerson(person);
-                    // addPerson(personShare);
-
                     break;
             }
 
@@ -258,7 +251,6 @@ void Personer::uiAddPerson(){
                 std::cout << std::endl;
 
                 std::cout << "Enter share: ";
-                // std::cin >> share;
 
                 while (1) {
                 if (std::cin >> share) {
