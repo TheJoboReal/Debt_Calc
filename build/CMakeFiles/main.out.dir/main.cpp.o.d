@@ -1,7 +1,8 @@
 CMakeFiles/main.out.dir/main.cpp.o: \
  /home/kasper/Documents/Civilingeniør_Robotteknologi/C++/cpp_workspace/Debt_Calc/main.cpp \
- /usr/include/stdc-predef.h /usr/include/c++/11/memory \
- /usr/include/c++/11/bits/stl_algobase.h \
+ /usr/include/stdc-predef.h \
+ /home/kasper/Documents/Civilingeniør_Robotteknologi/C++/cpp_workspace/Debt_Calc/ui.h \
+ /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
