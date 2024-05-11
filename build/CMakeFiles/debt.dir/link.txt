@@ -1,0 +1,1 @@
+/usr/bin/g++ -g -rdynamic CMakeFiles/debt.dir/main.cpp.o -o debt 
