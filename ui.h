@@ -4,6 +4,7 @@
 // Copyright 2020 Arthur Sonzogni. All rights reserved.
 // Use of this source code is governed by the MIT license that can be found in
 // the LICENSE file.
+#include <functional>  // for function
 #include <memory>  // for allocator, __shared_ptr_access
 #include <string>  // for char_traits, operator+, string, basic_string
 #include <vector>  // for vector
@@ -12,81 +13,65 @@
 #include "person.h"
 
 #include "ftxui/component/captured_mouse.hpp"  // for ftxui
-#include "ftxui/component/component.hpp"       // for Input, Renderer, Vertical
+#include "ftxui/component/component.hpp"  // for Slider, Checkbox, Vertical, Renderer, Button, Input, Menu, Radiobox, Toggle
 #include "ftxui/component/component_base.hpp"  // for ComponentBase
-#include "ftxui/component/component_options.hpp"  // for InputOption
 #include "ftxui/component/screen_interactive.hpp"  // for Component, ScreenInteractive
-#include "ftxui/dom/elements.hpp"  // for text, hbox, separator, Element, operator|, vbox, border
-#include "ftxui/util/ref.hpp"  // for Ref
+#include "ftxui/dom/elements.hpp"  // for separator, operator|, Element, size, xflex, text, WIDTH, hbox, vbox, EQUAL, border, GREATER_THAN
+#include "ftxui/dom/table.hpp"
  
+  using namespace ftxui;
 
 Personer personer();
 std::vector<Person> personer_vector;
 
+// Display a component nicely with a title on the left.
+Component Wrap(std::string name, Component component) {
+  return Renderer(component, [name, component] {
+    return hbox({
+               text(name) | size(WIDTH, EQUAL, 6),
+               separator(),
+               component->Render() | xflex,
+           }) |
+           xflex;
+  });
+}
 
 
 void ui() {
-  using namespace ftxui;
- 
-  // The data:
-  std::string name;
-  std::string share;
- 
-  // The basic name input components:
-  Component input_name = Input(&name, "Name");
- 
- 
-  // The share component:
-  // We are using `CatchEvent` to filter out non-digit characters.
-  Component input_share = Input(&share, "Share");
-  input_share |= CatchEvent([&](Event event) {
-    return event.is_character() && !std::isdigit(event.character()[0]) && !std::ispunct(event.character()[0]);
-  });
-  input_share |= CatchEvent([&](Event event) {
-    return event.is_character() && share.size() > 10;
-  });
- 
-  // The component tree:
-  auto component = Container::Vertical({
-      input_name,
-      input_share
-  });
- 
   auto screen = ScreenInteractive::TerminalOutput();
+ 
 
-  // Add a button_exit component:
-Component button_exit = Button({
-  .label = "Click to quit",
-  .on_click = screen.ExitLoopClosure(),
-});
+  auto input_name = Input(" ", "placeholder");
+  input_name = Wrap("Name", input_name);
 
-  // Render the button_exit:
-  auto button_renderer = Renderer(button_exit, [&] {
-    return button_exit->Render();
+  auto input_share = Input(" ", "placeholder");
+  input_share = Wrap("Share", input_share);
+ 
+  // -- Button -----------------------------------------------------------------
+  std::string button_label = "Quit";
+  std::function<void()> on_button_clicked_;
+  auto button = Button(&button_label, screen.ExitLoopClosure());
+ 
+
+  auto layout = Container::Vertical({
+      input_name,
+      input_share,
+      button,
   });
 
-  // Tweak how the component tree is rendered:
-  auto renderer = Renderer(component, [&] {
-    // Person person(name, share);
-    // personer.addPerson(person);
-
+  auto component = Renderer(layout, [&] {
     return vbox({
-               hbox(text(" Name : "), input_name->Render()),
-               hbox(text(" Share  : "), input_share->Render()),
+               input_name->Render(),
                separator(),
-               text("Hello " + name),
-               text("Your share is " + share),
+               input_share->Render(),
                separator(),
-               button_renderer->Render(), // Add the button_exit component to the renderer
+               button->Render(),
            }) |
-           border;
+           xflex | size(WIDTH, GREATER_THAN, 40) | border;
   });
-
-  // Add the button_exit component to the component tree:
-  component->Add(button_exit);
 
  
-  screen.Loop(renderer);
+  screen.Loop(component);
 }
  
 
