@@ -62,28 +62,32 @@ void Personer::updateShares(){
 
 };
 
-// void Personer::whoOwed(){
-
-//     std::vector<Person> owed;
-//     std::vector<Person> owes;
-
-//     for(int i=0; i<_personer.size(); i++){
-//         if(_personer[i].getShare() < 0){
-//             owed.push_back(_personer[i]);
-//         }
-//         else if(_personer[i].getShare() > 0){
-//             owes.push_back(_personer[i]);
-//         }
-//     }
-
-//     for(int i=0; i<owed.size(); i++){
-//         for(int j=0; j<owes.size(); j++){
-//             std::cout << owes[j].getName() << " skal sende :" << -owed[i].getShare() / owes.size() << "kr til " << owed[i].getName() << std::endl;
-//         }
-//     }
-// }
 
 void Personer::whoOwed() {
+    /*******************************************//**
+    * @brief Calculates the factorial of a number.
+    *
+    * This function computes the factorial of a given
+    * non-negative integer. It uses a recursive approach to
+    * calculate the factorial.
+    *
+    * @param n The number for which the factorial is to be
+    * calculated.
+    *
+    * @return The factorial of the number.
+    *
+    * @details
+    * The factorial of a non-negative integer n is the product
+    * of all positive integers less than or equal to n. For
+    * example, the factorial of 5 is 5 * 4 * 3 * 2 * 1 = 120.
+    * This function uses recursion to compute the factorial.
+    *
+    *  @example example.cpp
+    *
+    * @usage
+    * int result = factorial(5); // result will be 120
+    ***********************************************/
+
     std::vector<Person> owed;
     std::vector<Person> owes;
 
@@ -121,6 +125,9 @@ void Personer::whoOwed() {
 }
 
 void Personer::whatOwed(){
+    /*******************************************//**
+    *  This is a print function that shows who is owed money and how much.
+    ***********************************************/
     for(int i=0; i<_personer.size(); i++){
         if(_personer[i].getShare() < 0){
             std::cout << _personer[i].getName() << " skal modtage :" << -_personer[i].getShare() << "kr" << std::endl;

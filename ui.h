@@ -2,6 +2,10 @@
 #include <vector>
 
 void ui() {
+    /*******************************************//**
+    *  The interface for the Personer class. This function provides a simple text-based menu that allows the user to interact with the Personer class. It allows the user to add people, show people, edit a person, and show results.
+    ***********************************************/
+
     Personer personer;
     char choice;
     bool run_state = true;
